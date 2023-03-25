@@ -112,8 +112,20 @@ try {
     uSearch: function () {
       return Promise.all(/*! import() | uni_modules/uview-ui/components/u-search/u-search */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-search/u-search")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-search/u-search.vue */ 168))
     },
+    uBadge: function () {
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-badge/u-badge */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-badge/u-badge")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-badge/u-badge.vue */ 233))
+    },
     "u-Textarea": function () {
       return Promise.all(/*! import() | uni_modules/uview-ui/components/u--textarea/u--textarea */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u--textarea/u--textarea")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u--textarea/u--textarea.vue */ 250))
+    },
+    uGrid: function () {
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-grid/u-grid */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-grid/u-grid")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-grid/u-grid.vue */ 282))
+    },
+    uGridItem: function () {
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-grid-item/u-grid-item */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-grid-item/u-grid-item")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-grid-item/u-grid-item.vue */ 290))
+    },
+    uIcon: function () {
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-icon/u-icon */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-icon/u-icon")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-icon/u-icon.vue */ 200))
     },
     uTabbar: function () {
       return Promise.all(/*! import() | uni_modules/uview-ui/components/u-tabbar/u-tabbar */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-tabbar/u-tabbar")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-tabbar/u-tabbar.vue */ 184))
@@ -143,6 +155,24 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
+  var l0 = _vm.__map(_vm.itemList, function (itemListItem, itemListIndex) {
+    var $orig = _vm.__get_orig(itemListItem)
+    var a0 = {
+      paddingTop: 20 + "rpx",
+    }
+    return {
+      $orig: $orig,
+      a0: a0,
+    }
+  })
+  _vm.$mp.data = Object.assign(
+    {},
+    {
+      $root: {
+        l0: l0,
+      },
+    }
+  )
 }
 var recyclableRender = false
 var staticRenderFns = []
@@ -225,6 +255,24 @@ exports.default = void 0;
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var _default = {
   data: function data() {
     return {
@@ -232,7 +280,26 @@ var _default = {
       keyword: '',
       question: '',
       list1: ['https://cdn.uviewui.com/uview/swiper/swiper11.png', 'https://cdn.uviewui.com/uview/swiper/swiper21.png', 'https://cdn.uviewui.com/uview/swiper/swiper31.png'],
-      value1: 0
+      value1: 0,
+      itemList: [{
+        name: 'photo',
+        title: '图片'
+      }, {
+        name: 'lock',
+        title: '锁头'
+      }, {
+        name: 'star',
+        title: '星星'
+      }, {
+        name: 'hourglass',
+        title: '沙漏'
+      }, {
+        name: 'home',
+        title: '首页'
+      }, {
+        name: 'star',
+        title: '音量'
+      }]
     };
   },
   onLoad: function onLoad() {},

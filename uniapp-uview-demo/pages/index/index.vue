@@ -12,23 +12,41 @@
 							</view>
 						</u-col>
 					</u-row>
-					<u-row justify="space-between" customStyle="margin-top: 10px;innerWidth: 80%">
-						<u-col span="8">
+					<u-row customStyle="margin-top: 10px;" gutter="10px">
+						<u-col justify="start" span="10">
 							<view>
-								<u-search placeholder="日照香炉生紫烟" v-model="keyword" :show-action="false"></u-search>
+								<u-search placeholder="type msg" v-model="keyword" :show-action="false"></u-search>
+							</view>
+						</u-col>
+						<u-col justify="end" span="2">
+							<view class="">
+								<u-badge shape="horn" type="error" max="9999" value="99999"></u-badge>
+							</view>
+						</u-col>
+					</u-row>
+					<u-row customStyle="margin-top: 10px;">
+						<u-col justify="end" span="12">
+							<view>
+								<u--textarea v-model="question" placeholder="请输入内容" count></u--textarea>
+							</view>
+						</u-col>
+					</u-row>
+					<u-row customStyle="margin-top: 10px;">
+						<u-col justify="end" span="12">
+							<view>
+								<u-grid :border="true" @click="click">
+									<u-grid-item v-for="(itemListItem, itemListIndex) in itemList" :key="baseListIndex">
+										<u-icon :customStyle="{paddingTop:20+'rpx'}" :name="itemListItem.name"
+											:size="22"></u-icon>
+										<text class="grid-text">{{itemListItem.title}}</text>
+									</u-grid-item>
+								</u-grid>
 							</view>
 						</u-col>
 					</u-row>
 				</view>
 			</view>
 		</view>
-
-		
-
-		<view>
-			<u--textarea v-model="question" placeholder="请输入内容" count></u--textarea>
-		</view>
-
 
 		<view>
 			<u-tabbar :value="value1" @change="change1" :fixed="true" :placeholder="false" :safeAreaInsetBottom="false">
@@ -53,7 +71,32 @@
 					'https://cdn.uviewui.com/uview/swiper/swiper21.png',
 					'https://cdn.uviewui.com/uview/swiper/swiper31.png',
 				],
-				value1: 0
+				value1: 0,
+				itemList: [{
+						name: 'photo',
+						title: '图片'
+					},
+					{
+						name: 'lock',
+						title: '锁头'
+					},
+					{
+						name: 'star',
+						title: '星星'
+					},
+					{
+						name: 'hourglass',
+						title: '沙漏'
+					},
+					{
+						name: 'home',
+						title: '首页'
+					},
+					{
+						name: 'star',
+						title: '音量'
+					},
+				]
 			}
 		},
 		onLoad() {
@@ -100,4 +143,19 @@
 		font-size: 36rpx;
 		color: #8f8f94;
 	}
+
+	.badge-box {
+		width: 40px;
+		height: 30px;
+		background-color: #909193;
+		border-radius: 15px;
+	}
+	.grid-text {
+	        font-size: 14px;
+	        color: #909399;
+	        padding: 10rpx 0 20rpx 0rpx;
+	        /* #ifndef APP-PLUS */
+	        box-sizing: border-box;
+	        /* #endif */
+	    }
 </style>

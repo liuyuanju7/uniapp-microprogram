@@ -1,0 +1,13 @@
+{
+  "component": true,
+  "usingComponents": {
+    "index-u-waterfall-left": "/pages/album/index-u-waterfall-left",
+    "index-u-waterfall-right": "/pages/album/index-u-waterfall-right",
+    "item-header": "/components/item-header/item-header",
+    "u-waterfall": "/uview-ui/components/u-waterfall/u-waterfall",
+    "u-loadmore": "/uview-ui/components/u-loadmore/u-loadmore",
+    "u-empty": "/uview-ui/components/u-empty/u-empty",
+    "loading": "/components/loading/loading",
+    "u-icon": "/uview-ui/components/u-icon/u-icon"
+  }
+}

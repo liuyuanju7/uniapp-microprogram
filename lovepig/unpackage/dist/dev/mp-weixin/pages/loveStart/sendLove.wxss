@@ -1,0 +1,120 @@
+@charset "UTF-8";
+/**
+ * 下方引入的为uView UI的集成样式文件，为scss预处理器，其中包含了一些"u-"开头的自定义变量
+ * uView自定义的css类名和scss变量，均以"u-"开头，不会造成冲突，请放心使用 
+ */
+.highlight {
+  color: #ff6773;
+}
+.baseStyle {
+  padding: 16rpx;
+  background-color: white;
+  border-radius: 20rpx;
+}
+.image-style {
+  width: 100%;
+  height: 100%;
+  border-radius: 20rpx;
+}
+.border-radius {
+  border-radius: 20rpx;
+}
+.base_button {
+  width: 80%;
+  height: 100rpx;
+  text-align: center;
+  line-height: 100rpx;
+  color: white;
+  font-size: 30rpx;
+  box-shadow: 0 0px 10px #F5F5F5;
+  background: linear-gradient(to right, #ed4264, #ffedbc);
+  border-radius: 50rpx;
+  margin: 20rpx auto;
+}
+.right-btn {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  border-radius: 45px;
+  box-shadow: 0 0 2px 0px #ff6773;
+  width: 90rpx;
+  height: 90rpx;
+  color: #ffffff;
+  background-color: #ff6773;
+  font-size: 50rpx;
+  right: 25px;
+  bottom: 50px;
+}
+.base-input {
+  background-color: #f3f4f6;
+  padding: 30rpx;
+  margin: 20rpx 28rpx;
+  border-radius: 20rpx;
+}
+.line-hid {
+  width: 200px;
+  text-align: right;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.text-hh {
+  word-break: break-all;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+}
+.text-sl {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+page {
+  background-color: #ff6773;
+}
+.main {
+  padding: 0 24rpx;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16rpx 0rpx;
+}
+.logo image {
+  height: 250rpx;
+  width: 250rpx;
+}
+.logo .logn-content {
+  color: #ff6773;
+  font-size: 50rpx;
+}
+.love-header {
+  margin-bottom: 60rpx;
+  text-align: center;
+  color: white;
+  font-weight: bold;
+  font-size: 38rpx;
+}
+.love-wrapper {
+  background-color: white;
+  width: 100%;
+  border-radius: 20rpx;
+  text-align: center;
+  padding: 30rpx 0;
+}
+.love-wrapper .textareaStyle {
+  max-height: 150rpx;
+  width: 100%;
+}
+.love-wrapper .lw-btn {
+  margin-top: 50rpx;
+}
+

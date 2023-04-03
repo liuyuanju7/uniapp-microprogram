@@ -1,0 +1,14 @@
+{
+  "navigationStyle": "custom",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "item-header": "/components/item-header/item-header",
+    "story": "/components/story/story",
+    "u-divider": "/uview-ui/components/u-divider/u-divider",
+    "push-popup": "/components/push-popup/push-popup",
+    "u-toast": "/uview-ui/components/u-toast/u-toast",
+    "love-time": "/pages/index/components/love-time",
+    "love-btn-fun": "/pages/index/components/love-btn-fun",
+    "love-four": "/pages/index/components/love-four"
+  }
+}

@@ -484,4 +484,7 @@
   -webkit-appearance: none;
   background: transparent;
 }
+page {
+  background-color: #ffffff;
+}
 

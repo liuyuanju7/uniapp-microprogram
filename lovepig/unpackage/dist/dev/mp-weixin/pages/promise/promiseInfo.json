@@ -1,0 +1,15 @@
+{
+  "navigationBarTextStyle": "white",
+  "navigationBarTitleText": "承诺",
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "back-button": "/components/back-button/back-button",
+    "u-row": "/uview-ui/components/u-row/u-row",
+    "u-col": "/uview-ui/components/u-col/u-col",
+    "u-icon": "/uview-ui/components/u-icon/u-icon",
+    "u-line": "/uview-ui/components/u-line/u-line",
+    "story-image": "/components/story-image/story-image",
+    "u-loadmore": "/uview-ui/components/u-loadmore/u-loadmore",
+    "loading": "/components/loading/loading"
+  }
+}

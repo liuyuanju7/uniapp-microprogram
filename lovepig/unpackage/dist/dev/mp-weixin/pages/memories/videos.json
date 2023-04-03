@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "视频",
+  "usingComponents": {
+    "loading": "/components/loading/loading",
+    "u-empty": "/uview-ui/components/u-empty/u-empty"
+  }
+}

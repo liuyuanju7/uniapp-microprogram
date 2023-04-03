@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "纪念日",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "u-empty": "/uview-ui/components/u-empty/u-empty",
+    "u-icon": "/uview-ui/components/u-icon/u-icon",
+    "u-toast": "/uview-ui/components/u-toast/u-toast"
+  }
+}

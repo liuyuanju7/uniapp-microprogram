@@ -1,0 +1,7 @@
+{
+  "navigationBarBackgroundColor": "#ff6773",
+  "usingComponents": {
+    "u-toast": "/uview-ui/components/u-toast/u-toast",
+    "u-avatar": "/uview-ui/components/u-avatar/u-avatar"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "love-btn": "/components/love-btn/love-btn"
+  }
+}

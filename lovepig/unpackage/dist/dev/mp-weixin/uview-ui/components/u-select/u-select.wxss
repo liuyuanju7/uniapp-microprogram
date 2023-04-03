@@ -1,0 +1,129 @@
+@charset "UTF-8";
+/**
+ * 下方引入的为uView UI的集成样式文件，为scss预处理器，其中包含了一些"u-"开头的自定义变量
+ * uView自定义的css类名和scss变量，均以"u-"开头，不会造成冲突，请放心使用 
+ */
+.highlight.data-v-a577ac80 {
+  color: #ff6773;
+}
+.baseStyle.data-v-a577ac80 {
+  padding: 16rpx;
+  background-color: white;
+  border-radius: 20rpx;
+}
+.image-style.data-v-a577ac80 {
+  width: 100%;
+  height: 100%;
+  border-radius: 20rpx;
+}
+.border-radius.data-v-a577ac80 {
+  border-radius: 20rpx;
+}
+.base_button.data-v-a577ac80 {
+  width: 80%;
+  height: 100rpx;
+  text-align: center;
+  line-height: 100rpx;
+  color: white;
+  font-size: 30rpx;
+  box-shadow: 0 0px 10px #F5F5F5;
+  background: linear-gradient(to right, #ed4264, #ffedbc);
+  border-radius: 50rpx;
+  margin: 20rpx auto;
+}
+.right-btn.data-v-a577ac80 {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  border-radius: 45px;
+  box-shadow: 0 0 2px 0px #ff6773;
+  width: 90rpx;
+  height: 90rpx;
+  color: #ffffff;
+  background-color: #ff6773;
+  font-size: 50rpx;
+  right: 25px;
+  bottom: 50px;
+}
+.base-input.data-v-a577ac80 {
+  background-color: #f3f4f6;
+  padding: 30rpx;
+  margin: 20rpx 28rpx;
+  border-radius: 20rpx;
+}
+.line-hid.data-v-a577ac80 {
+  width: 200px;
+  text-align: right;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.text-hh.data-v-a577ac80 {
+  word-break: break-all;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+}
+.text-sl.data-v-a577ac80 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.u-select__action.data-v-a577ac80 {
+  position: relative;
+  line-height: 70rpx;
+  height: 70rpx;
+}
+.u-select__action__icon.data-v-a577ac80 {
+  position: absolute;
+  right: 20rpx;
+  top: 50%;
+  transition: -webkit-transform .4s;
+  transition: transform .4s;
+  transition: transform .4s, -webkit-transform .4s;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  z-index: 1;
+}
+.u-select__action__icon--reverse.data-v-a577ac80 {
+  -webkit-transform: rotate(-180deg) translateY(50%);
+          transform: rotate(-180deg) translateY(50%);
+}
+.u-select__hader__title.data-v-a577ac80 {
+  color: #606266;
+}
+.u-select--border.data-v-a577ac80 {
+  border-radius: 6rpx;
+  border-radius: 4px;
+  border: 1px solid #dcdfe6;
+}
+.u-select__header.data-v-a577ac80 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  height: 80rpx;
+  padding: 0 40rpx;
+}
+.u-select__body.data-v-a577ac80 {
+  width: 100%;
+  height: 500rpx;
+  overflow: hidden;
+  background-color: #fff;
+}
+.u-select__body__picker-view.data-v-a577ac80 {
+  height: 100%;
+  box-sizing: border-box;
+}
+.u-select__body__picker-view__item.data-v-a577ac80 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  font-size: 32rpx;
+  color: #303133;
+  padding: 0 8rpx;
+}
+

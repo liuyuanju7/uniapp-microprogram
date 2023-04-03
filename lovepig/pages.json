@@ -1,0 +1,226 @@
+{
+	"easycom": {
+		"^u-(.*)": "@/uview-ui/components/u-$1/u-$1.vue"
+	},
+	"pages": [{
+			"path": "pages/index/index",
+			"style": {
+				"navigationStyle": "custom",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/loveStart/loveStart",
+			"style": {
+				"navigationBarTitleText": "爱窝"
+			}
+		},
+		{
+			"path": "pages/user/login",
+			"style": {
+				"navigationBarTitleText": "登录"
+			}
+		},
+		{
+			"path": "pages/center/index",
+			"style": {
+				"navigationBarTitleText": "我的",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/memories/memories",
+			"style": {
+				"navigationBarTitleText": "发现"
+			}
+		},
+		{
+			"path": "pages/story/story-detail",
+			"style": {}
+
+		},
+		{
+			"path": "pages/story/dynamicDetail"
+		},
+		{
+			"path": "pages/saveStory/put-story",
+			"style": {
+				"navigationBarTitleText": "发表文章"
+			}
+		},
+		{
+			"path": "pages/saveStory/put-dynamic",
+			"style": {
+				"navigationBarTitleText": "发布动态"
+			}
+		},
+		{
+			"path": "pages/loveStart/sendLove",
+			"style": {
+				"navigationBarBackgroundColor": "#ff6773",
+				"enablePullDownRefresh": true,
+				"navigationBarTextStyle": "white"
+			}
+		},
+		{
+			"path": "pages/loveStart/acceptLove",
+			"style": {
+				"navigationBarBackgroundColor": "#ff6773"
+			}
+		},
+		{
+			"path": "pages/center/loveRoom",
+			"style": {
+				"navigationBarTitleText": "空间装饰"
+			}
+		},
+		{
+			"path": "pages/story/index",
+			"style": {
+				"navigationBarTitleText": "故事"
+			}
+		},
+		{
+			"path": "pages/memories/videos",
+			"style": {
+				"navigationBarTitleText": "视频"
+			}
+		},
+		{
+			"path": "pages/promise/index",
+			"style": {
+				"navigationBarTitleText": "承诺"
+			}
+		},
+		{
+			"path": "pages/album/pushPhoto",
+			"style": {
+				"navigationBarTitleText": "发布照片"
+			}
+		},
+		{
+			"path": "pages/anniversary/anniversarys",
+			"style": {
+				"navigationBarTitleText": "纪念日"
+			}
+		},
+		{
+			"path": "pages/promise/editPromise",
+			"style": {
+				"navigationBarTitleText": "定承诺"
+			}
+		},
+		{
+			"path": "pages/anniversary/editAnniversary",
+			"style": {
+				"navigationBarTitleText": "纪念日"
+			}
+		},
+		{
+			"path": "pages/commoms/showimg",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/promise/promiseInfo",
+			"style": {
+				"navigationBarTextStyle": "white",
+				"navigationBarTitleText": "承诺",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/album/index",
+			"style": {
+				"navigationBarTitleText": "照片"
+			}
+		},
+		{
+			"path": "pages/album/albumPage",
+			"style": {
+				"navigationBarTitleText": "相册",
+				"navigationBarTextStyle": "black",
+				"navigationBarBackgroundColor": "#F8F8F8"
+			}
+		},
+		{
+			"path": "pages/album/albumDetail",
+			"style": {
+				"navigationBarTitleText": "相册详细"
+			}
+
+		}, {
+			"path": "pages/album/newAlbum",
+			"style": {
+				"navigationBarTitleText": "创建相册"
+			}
+
+		}, {
+			"path": "pages/album/selectImage",
+			"style": {
+				"navigationBarTitleText": "选择背景"
+			}
+		}, {
+			"path": "pages/anniversary/index",
+			"style": {
+				"navigationBarTitleText": "纪念日",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/community/index",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/index/test",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
+		}
+	    ,{
+            "path" : "pages/message/index",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "留言",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+    ],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "爱窝",
+		"navigationBarBackgroundColor": "#fff",
+		"backgroundColor": "#fff",
+		"backgroundColorTop": "#fff",
+		"backgroundColorBottom": "#fff"
+	},
+	"tabBar": {
+		"color": "#707070",
+		"selectedColor": "#ff6773",
+		"borderStyle": "white",
+		"backgroundColor": "white",
+		"list": [{
+			"pagePath": "pages/index/index",
+			"iconPath": "static/icon/tab/index.png",
+			"selectedIconPath": "static/icon/tab/index-select.png",
+			"text": "首页"
+		}, {
+			"pagePath": "pages/anniversary/index",
+			"iconPath": "static/icon/tab/anniversary.png",
+			"selectedIconPath": "static/icon/tab/anniversary-sel.png",
+			"text": "纪念日"
+		}, {
+			"pagePath": "pages/center/index",
+			"iconPath": "static/icon/tab/me.png",
+			"selectedIconPath": "static/icon/tab/me-select.png",
+			"text": "我"
+		}]
+	}
+}

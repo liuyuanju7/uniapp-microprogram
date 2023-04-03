@@ -1,0 +1,269 @@
+@charset "UTF-8";
+/**
+ * 下方引入的为uView UI的集成样式文件，为scss预处理器，其中包含了一些"u-"开头的自定义变量
+ * uView自定义的css类名和scss变量，均以"u-"开头，不会造成冲突，请放心使用 
+ */
+.highlight {
+  color: #ff6773;
+}
+.baseStyle {
+  padding: 16rpx;
+  background-color: white;
+  border-radius: 20rpx;
+}
+.image-style {
+  width: 100%;
+  height: 100%;
+  border-radius: 20rpx;
+}
+.border-radius {
+  border-radius: 20rpx;
+}
+.base_button {
+  width: 80%;
+  height: 100rpx;
+  text-align: center;
+  line-height: 100rpx;
+  color: white;
+  font-size: 30rpx;
+  box-shadow: 0 0px 10px #F5F5F5;
+  background: linear-gradient(to right, #ed4264, #ffedbc);
+  border-radius: 50rpx;
+  margin: 20rpx auto;
+}
+.right-btn {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  border-radius: 45px;
+  box-shadow: 0 0 2px 0px #ff6773;
+  width: 90rpx;
+  height: 90rpx;
+  color: #ffffff;
+  background-color: #ff6773;
+  font-size: 50rpx;
+  right: 25px;
+  bottom: 50px;
+}
+.base-input {
+  background-color: #f3f4f6;
+  padding: 30rpx;
+  margin: 20rpx 28rpx;
+  border-radius: 20rpx;
+}
+.line-hid {
+  width: 200px;
+  text-align: right;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.text-hh {
+  word-break: break-all;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+}
+.text-sl {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+page {
+  background-color: #F5F5F5;
+}
+.main {
+  display: flex;
+  flex-direction: column;
+}
+.main > view {
+  padding: 0 24rpx;
+  background-color: white;
+}
+.story-main > view {
+  margin: 20rpx 0;
+}
+.story-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: #303133;
+}
+.story-header .story-u-avatar {
+  margin-right: 20rpx;
+}
+.story-header .story-username {
+  font-size: 28rpx;
+}
+.story-header .story-publish {
+  display: flex;
+  color: #909399;
+}
+.story-header .story-publish .story-publishinfo {
+  font-size: 24rpx;
+  margin-right: 6rpx;
+}
+.story-content {
+  font-size: 30rpx;
+  overflow: hidden;
+  word-break: break-all;
+  line-height: 1.67;
+  letter-spacing: 1rpx;
+}
+.promise {
+  height: 100rpx;
+  margin-top: 20rpx;
+  padding: 0 24rpx;
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.promise .promise-info {
+  display: flex;
+  align-items: center;
+}
+.promise .promise-avatar {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  margin-right: 20rpx;
+}
+.promise .promise-title {
+  font-size: 30rpx;
+  font-weight: bold;
+}
+.promise .promise-tip {
+  font-size: 24rpx;
+  color: #606266;
+}
+.promise .promise-more {
+  font-size: 24rpx;
+  color: #606266;
+}
+.story-comment {
+  background-color: #ffffff;
+  height: 1200rpx;
+  margin-top: 20rpx;
+}
+.comment {
+  display: flex;
+  padding: 30rpx;
+}
+.comment .left image {
+  width: 64rpx;
+  height: 64rpx;
+  border-radius: 50%;
+  background-color: #f2f2f2;
+}
+.comment .right {
+  flex: 1;
+  padding-left: 20rpx;
+  font-size: 30rpx;
+}
+.comment .right .top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10rpx;
+}
+.comment .right .top .name {
+  color: #ff6773;
+}
+.comment .right .top .like {
+  display: flex;
+  align-items: center;
+  color: #9a9a9a;
+  font-size: 26rpx;
+}
+.comment .right .top .like .num {
+  margin-right: 4rpx;
+  color: #9a9a9a;
+}
+.comment .right .top .highlight {
+  color: #ff6773;
+}
+.comment .right .top .highlight .num {
+  color: #ff6773;
+}
+.comment .right .content {
+  margin-bottom: 10rpx;
+}
+.comment .right .reply-box {
+  background-color: #f2f2f2;
+  border-radius: 12rpx;
+}
+.comment .right .reply-box .item {
+  padding: 20rpx;
+  border-bottom: solid 2rpx #e4e7ed;
+}
+.comment .right .reply-box .item .username {
+  font-size: 24rpx;
+  color: #999999;
+}
+.comment .right .reply-box .all-reply {
+  padding: 20rpx;
+  display: flex;
+  color: #ff6773;
+  align-items: center;
+}
+.comment .right .reply-box .all-reply .more {
+  margin-left: 6rpx;
+}
+.comment .right .bottom {
+  margin-top: 20rpx;
+  display: flex;
+  font-size: 24rpx;
+  color: #9a9a9a;
+}
+.comment .right .bottom .reply {
+  color: #ff6773;
+  margin-left: 10rpx;
+}
+.comment-module {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 80rpx;
+  background-color: #ffffff;
+  box-shadow: 0 1px 1px 1px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.comment-module .comment-module-input {
+  height: 100%;
+  width: 60%;
+  background-color: white;
+  line-height: 80rpx;
+  color: #909399;
+}
+.comment-module .comment-module-option {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  height: 100%;
+  width: 40%;
+}
+.add-comment .add-comment-top {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.add-comment .add-comment-top view {
+  padding: 20rpx 30rpx;
+  font-size: 32rpx;
+}
+.add-comment textarea {
+  background-color: #F5F5F5;
+  margin: 0 28rpx;
+  width: 92%;
+}
+.add-comment .add-comment-input {
+  margin: 0 30rpx;
+  max-height: 230rpx;
+}
+

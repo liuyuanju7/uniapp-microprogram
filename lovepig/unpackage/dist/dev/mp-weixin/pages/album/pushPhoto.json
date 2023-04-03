@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "发布照片",
+  "usingComponents": {
+    "u-toast": "/uview-ui/components/u-toast/u-toast",
+    "u-upload": "/uview-ui/components/u-upload/u-upload"
+  }
+}

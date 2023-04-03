@@ -1,0 +1,72 @@
+
+page {
+	background-color: #f7f7f7;
+}
+.personal {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 30rpx 0 40rpx 30rpx;
+}
+.personal-main {
+	display: flex;
+	align-items: center;
+}
+.personal-info {
+	display: flex;
+	flex-direction: column;
+}
+.u-avatar {
+	margin-right: 30rpx;
+}
+.navbar-right {
+	padding: 0 40rpx;
+}
+.navbar-right-icon {
+	margin-left: 50rpx;
+}
+.hover-class {
+	background-color: #efefef;
+}
+.n-p {
+	display: flex;
+	align-items: center;
+	background-color: #ffffff;
+	margin-bottom: 20rpx;
+}
+.p-right-icon {
+	padding: 0 40rpx;
+}
+.p-left {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 60rpx;
+	height: 60rpx;
+	padding: 10rpx;
+	margin: 20rpx;
+	color: #ffffff;
+	border-radius: 10rpx;
+}
+.p-right {
+	height: 90rpx;
+	flex: 1;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+.p-right-main {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+.p-right-main-name {
+	font-size: 36rpx;
+	font-weight: 500;
+}
+.p-right-main-time {
+	margin-right: 20rpx;
+	font-size: 24rpx;
+	color: #9d9d9d;
+}
+

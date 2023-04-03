@@ -1,0 +1,1 @@
+<view hidden="{{!(showLoading)}}" class="loading-fixed data-v-e4cdeb04"><view class="loading data-v-e4cdeb04"><image class="loading-image data-v-e4cdeb04" src="/static/icon/common/love-load.gif" mode></image></view></view>

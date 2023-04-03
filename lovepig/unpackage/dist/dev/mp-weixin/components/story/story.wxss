@@ -1,0 +1,209 @@
+@charset "UTF-8";
+/**
+ * 下方引入的为uView UI的集成样式文件，为scss预处理器，其中包含了一些"u-"开头的自定义变量
+ * uView自定义的css类名和scss变量，均以"u-"开头，不会造成冲突，请放心使用 
+ */
+.highlight {
+  color: #ff6773;
+}
+.baseStyle {
+  padding: 16rpx;
+  background-color: white;
+  border-radius: 20rpx;
+}
+.image-style {
+  width: 100%;
+  height: 100%;
+  border-radius: 20rpx;
+}
+.border-radius {
+  border-radius: 20rpx;
+}
+.base_button {
+  width: 80%;
+  height: 100rpx;
+  text-align: center;
+  line-height: 100rpx;
+  color: white;
+  font-size: 30rpx;
+  box-shadow: 0 0px 10px #F5F5F5;
+  background: linear-gradient(to right, #ed4264, #ffedbc);
+  border-radius: 50rpx;
+  margin: 20rpx auto;
+}
+.right-btn {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  border-radius: 45px;
+  box-shadow: 0 0 2px 0px #ff6773;
+  width: 90rpx;
+  height: 90rpx;
+  color: #ffffff;
+  background-color: #ff6773;
+  font-size: 50rpx;
+  right: 25px;
+  bottom: 50px;
+}
+.base-input {
+  background-color: #f3f4f6;
+  padding: 30rpx;
+  margin: 20rpx 28rpx;
+  border-radius: 20rpx;
+}
+.line-hid {
+  width: 200px;
+  text-align: right;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.text-hh {
+  word-break: break-all;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+}
+.text-sl {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.story-card {
+  background-color: #ffffff;
+  border-radius: 20rpx;
+  margin-bottom: 20rpx;
+}
+.story-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: #303133;
+}
+.story-header .story-u-avatar {
+  margin-right: 20rpx;
+}
+.story-header .story-username {
+  font-size: 28rpx;
+}
+.story-header .story-publish {
+  display: flex;
+  color: #909399;
+}
+.story-header .story-publish .story-publishinfo {
+  font-size: 24rpx;
+  margin-right: 6rpx;
+}
+.story-d-footer {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  padding-top: 20rpx;
+}
+.story-d {
+  margin: 20rpx;
+}
+.story-d .story-d-content {
+  margin: 20rpx 0;
+  word-break: break-all;
+}
+.story-d .story-d-picture-big {
+  height: 280rpx;
+  width: 100%;
+  margin: 20rpx 0;
+}
+.story-d .story-d-picture-big .picture-image {
+  height: 100%;
+  width: 100%;
+  border-radius: 20rpx;
+}
+.story-d .story-double-picture {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+  border-radius: 20rpx;
+}
+.story-d .story-double-picture .iamge_item {
+  flex: 0 0 49.3%;
+  border-radius: 20rpx;
+  height: 280rpx;
+  margin-bottom: 20rpx;
+}
+.story-d .story-double-picture .picture-image {
+  width: 100%;
+  height: 280rpx;
+  border-radius: 20rpx;
+}
+.story-d .story-d-picture {
+  display: flex;
+  align-items: center;
+  flex-flow: wrap;
+  justify-content: space-between;
+  border-radius: 20rpx;
+}
+.story-d .story-d-picture .iamge_item {
+  flex: 0 0 32.4%;
+  border-radius: 20rpx;
+  height: 220rpx;
+  margin-bottom: 8rpx;
+}
+.story-d .story-d-picture .picture-image {
+  width: 100%;
+  height: 220rpx;
+  border-radius: 20rpx;
+}
+.story-d .story-extend {
+  display: flex;
+}
+.story-d .story-extend .promise {
+  margin: 20rpx 0;
+}
+.article-base {
+  padding: 16rpx;
+}
+.article-base .article-base-title {
+  font-size: 34rpx;
+  font-weight: bold;
+  padding: 16rpx 0;
+}
+.article-base .article-banner {
+  height: 280rpx;
+  width: 100%;
+}
+.article-base .article-banner .picture-image {
+  height: 100%;
+  width: 100%;
+  border-radius: 20rpx;
+}
+.article-base .article-base-content {
+  padding-top: 16rpx;
+  color: #606266;
+}
+.article-big {
+  height: 360rpx;
+  position: relative;
+}
+.article-big .article-img {
+  height: 100%;
+  width: 100%;
+  border-radius: 20rpx;
+}
+.article-big .article-title {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  color: white;
+  font-size: 34rpx;
+  font-weight: bold;
+  padding: 16rpx;
+  border-radius: 20rpx;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+

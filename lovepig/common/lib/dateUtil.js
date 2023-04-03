@@ -1,0 +1,5 @@
+function isLogin() {
+	
+};
+export default {
+}

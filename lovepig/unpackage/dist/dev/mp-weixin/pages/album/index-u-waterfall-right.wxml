@@ -1,0 +1,1 @@
+<block wx:for="{{rightList}}" wx:for-item="item" wx:for-index="index" wx:key="resourceId"><view class="photo"><image class="photo-img" src="{{item.resourceUrl}}" mode="widthFix" data-event-opts="{{[['tap',[['catPhotoNew',['$0'],[[['rightList','resourceId',item.resourceId,'resourceId']]]]]]]}}" bindtap="__e"></image></view></block>

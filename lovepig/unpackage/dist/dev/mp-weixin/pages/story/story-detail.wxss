@@ -1,0 +1,51 @@
+
+page {
+	min-height: 100%;
+}
+.banner {
+	height: 180px;
+	position: relative;
+	background-color: #ccc;
+	flex-direction: row;
+	overflow: hidden;
+}
+.banner-img {
+	flex: 1;
+	filter: blur(10px);
+	-webkit-filter: blur(10px);
+}
+.title-area {
+	position: absolute;
+	font-weight: bold;
+	left: 15px;
+	right: 15px;
+	bottom: 15px;
+	z-index: 11;
+}
+.title-text {
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 20px;
+	lines: 2;
+	color: $love-main-color;
+	overflow: hidden;
+}
+.story-u-avatar {
+	margin: 20rpx;
+}
+.article-content {
+
+	font-size: 14px;
+	padding: 0rpx 15px 0 15px;
+	margin-bottom: 15px;
+	overflow: hidden;
+}
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,661 @@
+<template>
+	<view class="love-main">
+		<!-- 首页头部恋爱时间以及我们相册轮播 -->
+		<view class="love-time" :style="'background-image:url(' + getLoveStartInfo.banners[0].resourceUrl + ');'" @click="changeLoveBanner()">
+			<view class="love-time-info">
+				<view>
+					<u-avatar :src="getLoveStartInfo.inviteUserInfo.avatar" size="80"></u-avatar>
+					<view class="we-name">{{ getLoveStartInfo.inviteUserInfo.nickname }}</view>
+				</view>
+				<view class="love-time-day">
+					<view class="u-font-sm">我们已经相恋</view>
+					<view style="color: #ff6773;">{{ getLoveStartInfo.loveDay }}天</view>
+				</view>
+				<view>
+					<u-avatar :src="getLoveStartInfo.acceptedUserInfo.avatar" size="80"></u-avatar>
+					<view class="we-name">{{ getLoveStartInfo.acceptedUserInfo.nickname }}</view>
+				</view>
+			</view>
+		</view>
+		<view class="message">
+			<!-- <item-header title="思念" navigatorUrl="/pages/memories/messages"></item-header> -->
+			<view class="msg-send">
+				<!-- <textarea :value="missData.messageContent" class="msg-send-input" placeholder="想ta的一天"  maxlength="250"></textarea> -->
+				<u-input v-model="missData.messageContent" class="msg-send-input" :clearable="false" type="text" placeholder="想ta的一天" />
+				<u-icon class="msg-send-btn" name="heart-fill" color="#ff6773" size="48" @click="sendMiss"></u-icon>
+			</view>
+			<view class="we-like">
+				<navigator class="we-like-item" hover-class="none" url="/pages/memories/messages">
+					<image class="people-image" src="/static/icon/people/man.png" mode="aspectFill"></image>
+					<view class="we-like-content">
+						<view class="we-like-tip">想她</view>
+						<view class="we-like-number">100次</view>
+					</view>
+				</navigator>
+				<navigator class="we-like-item we-like-woman" hover-class="none" url="/pages/memories/messages">
+					<view class="we-like-content">
+						<view class="we-like-tip">想他</view>
+						<view class="we-like-number">100次</view>
+					</view>
+					<image class="people-image" src="/static/icon/people/woman.png" mode="aspectFill"></image>
+				</navigator>
+			</view>
+			<view>
+				<scroll-view class="message-main" scroll-y="true" @scrolltolower="messageScrolltolower" top="100">
+					<view class="message-item" v-for="(msg, index) in misss" :key="index">
+						<!-- <text class="message-content">{{ msg.userBase.nickname }}：{{ msg.messageContent }}</text> -->
+						<view class="message-content">{{ msg.userBase.nickname }}：{{ msg.messageContent }}</view>
+					</view>
+				</scroll-view>
+			</view>
+		</view>
+		<!-- 	<view class="todo">
+			<item-header title="纪念日" navigatorUrl="/pages/promise/index"></item-header>
+			<view class="todo-main">
+				<navigator class="todo-item" v-for="(p, index) in promise" :key="index" hover-class="none"
+					:url="'/pages/promise/promiseInfo?promiseId=' + p.promiseId">
+					<view class="todo-item-info">{{ p.promiseName }}</view>
+					<u-tag v-if="p.daysApart == 0" text="今天" mode="light" shape="circle" type="success" />
+					<u-tag v-if="p.daysApart > 0" :text="p.daysApart + '天后'" mode="light" shape="circle"
+						type="primary" />
+				</navigator>
+			</view>
+		</view> -->
+
+		<view class="story">
+			<item-header title="故事" navigatorUrl="/pages/memories/storys" margin="20"></item-header>
+			<story v-for="(item, index) in storys" :key="index" :story="item"></story>
+		</view>
+
+		<u-divider height="200">到心底啦~</u-divider>
+
+		<view class="add-story-popup">
+			<view class="story-fab" @click="showStoryPopup = true"><u-icon name="plus"></u-icon></view>
+			<u-popup v-model="showStoryPopup" mode="bottom" border-radius="20" height="300px">
+				<view class="love-tip">~此刻留下的记忆是你我最美好的回忆~</view>
+				<view class="add-story-mode">
+					<u-row gutter="16">
+						<u-col span="4" v-for="(item, index) in addStoryModes" :key="index">
+							<view hover-class="none" @click="openSendView(index)">
+								<view class="add_mode_item">
+									<image class="mode_image" :src="item.icon" mode="aspectFill"></image>
+									<!-- <u-icon :name="item.icon" :color="item.iconBackground" size="100rpx"></u-icon> -->
+									<view class="add_mode_title">{{ item.title }}</view>
+								</view>
+							</view>
+						</u-col>
+					</u-row>
+				</view>
+			</u-popup>
+		</view>
+		<u-toast ref="uToast" />
+	</view>
+</template>
+
+<script>
+import { mapGetters, mapState, mapMutations } from 'vuex';
+export default {
+	data() {
+		return {
+			loveStart: {
+				id: 521,
+				loveName: '爱猪猪',
+				inviteUserInfo: {
+					id: 1,
+					username: 'joke',
+					gender: 1,
+					nickname: '大宝贝',
+					avatar: 'https://lovestatic.jokeo.cn/202106/222.jpg'
+				},
+				acceptedUserInfo: {
+					id: 2,
+					username: 'moon',
+					gender: 2,
+					nickname: '小猪姑娘',
+					avatar: 'https://lovestatic.jokeo.cn/202106/222.jpg'
+				},
+				separatedTime: null,
+				allowAccess: 1,
+				loveType: 1,
+				banners: [
+					{
+						id: 20,
+						resourceType: 0,
+						resourceUrl: 'https://lovestatic.jokeo.cn/love/202112/162304213860.jpg'
+					}
+				]
+			},
+			storys: [],
+			misss: [
+				{
+					messageContent: '',
+					userBase: {
+						nickname: ''
+					}
+				}
+			],
+			missPage: 1,
+			missData: {
+				loveId: '',
+				messageContent: '',
+				messageType: 1,
+				state: 1
+			},
+			addStoryModes: [
+				{
+					title: '发动态',
+					id: 'loveRoom',
+					icon: '/static/icon/memoriesPage/story1.png',
+					pageUrl: '/pages/saveStory/put-dynamic'
+				},
+				{
+					title: '定承诺',
+					id: 'loveRoom',
+					icon: '/static/icon/memoriesPage/promise.png',
+					pageUrl: '/pages/promise/editPromise'
+				},
+				{
+					title: '纪念日',
+					id: 'loveRoom',
+					icon: '/static/icon/memoriesPage/time.png',
+					pageUrl: '/pages/promise/editAnniversary'
+				},
+				{
+					title: '发照片',
+					id: 'putPhoto',
+					icon: '/static/icon/memoriesPage/photo1.png',
+					pageUrl: '/pages/album/pushPhoto'
+				}
+			],
+			promise: [],
+			canIGetUserProfile: false,
+			isNewUser: false,
+			showStoryPopup: false
+		};
+	},
+	computed: {
+		...mapGetters(['getLoveStartId', 'getLoveStartInfo', 'getIsLogin', 'getLoginUser'])
+	},
+	onLoad() {
+		//在首页面控制登录
+		// this.navigatePath();
+		if (this.getLoveStartId != 0) {
+			this.init();
+		}
+	},
+	onPullDownRefresh() {
+		this.init();
+	},
+	methods: {
+		...mapMutations(['modifyLoveStartInfo']),
+		navigatePath() {
+			//1.如果没有创建空间跳转到loveStart
+			//2.如果已经创建跳转到邀请页面
+			//3.如果已经有对象直接跳转首页
+			console.info(this.getLoginUser);
+			if (!this.getIsLogin) {
+				//用户没登录成功跳转登录页面
+				console.info('用户没登录成功跳转登录页面==loveStart');
+				uni.reLaunch({
+					url: '/pages/loveStart/loveStart'
+				});
+			} else if (this.getLoginUser.loveId === 0) {
+				console.info('如果没有创建空间跳转到loveStart');
+				uni.reLaunch({
+					url: '/pages/loveStart/loveStart'
+				});
+			} else if (this.getLoginUser.spouseId === 0) {
+				console.info('如果已经创建跳转到邀请页面');
+				uni.reLaunch({
+					url: '/pages/loveStart/sendLove'
+				});
+			}
+		},
+		init() {
+			this.missData.loveId = this.getLoveStartId;
+			//查询恋爱空间信息
+			this.$u.api
+				.queryLoveStart({
+					loveId: this.getLoveStartId
+				})
+				.then(res => {
+					// console.info(res);
+					this.modifyLoveStartInfo(res);
+				});
+			//查询故事
+			this.$u.api
+				.queryStoryList({
+					loveId: this.getLoveStartId
+				})
+				.then(res => {
+					// console.info(res);
+					this.storys = res.data;
+					uni.stopPullDownRefresh();
+				});
+
+			//查询思念留言
+			this.$u.api
+				.queryMessageList({
+					loveId: this.getLoveStartId,
+					messageType: 1,
+					pageSize: 10
+				})
+				.then(res => {
+					// console.info(res);
+					this.misss = res.data;
+					if (this.misss.length === 0) {
+						this.misss.push({
+							messageContent: '今天是我们开启小窝的第一天,有什么想告诉我的嘛?快通过上方的输入框告诉我吧,每时每刻你有什么想告诉我的都可以发出来哦!!!',
+							userBase: {
+								nickname: 'pig'
+							}
+						});
+					}
+				});
+			//查询承诺
+			this.$u.api
+				.queryPromiseList({
+					loveId: this.getLoveStartId,
+					pageSize: 3
+				})
+				.then(res => {
+					// console.info(res);
+					this.promise = res;
+				});
+		},
+		//跳转更多信息页面
+		moreInfo: function(currId) {
+			uni.switchTab({
+				url: '/pages/memories/memories',
+				success() {
+					uni.setStorageSync('memoriesCurrent', currId);
+				}
+			});
+		},
+		//思念下拉框触底查询更多留言
+		messageScrolltolower: function(e) {
+			this.missPage++;
+			if (this.missPage > 5) {
+				console.info('思念留言记录最多查5页!当前已经到达第五页不在查询!');
+				return;
+			}
+			//查询故事
+			this.$u.api
+				.queryMessageList({
+					loveId: this.getLoveStartId,
+					messageType: 1,
+					pageSize: 5,
+					currPage: this.missPage
+				})
+				.then(res => {
+					// 查询到第下一个页留言
+					// console.info('查询到第' + this.missPage + '页留言' + res);
+					//往数组里添加新的数据
+					this.misss = this.misss.concat(res.data);
+				});
+		},
+		//保存思念信息
+		sendMiss: function() {
+			if (this.missData.messageContent.trim() === '') {
+				this.$refs.uToast.show({
+					title: '你想说啥?',
+					type: 'warning'
+				});
+				return;
+			}
+			if (!this.$pig.user.isLogin()) {
+				return;
+			}
+			// console.info('发送思念信息!');
+			//查询思念留言
+			this.$u.api.saveMessage(this.missData).then(res => {
+				this.$refs.uToast.show({
+					title: '思念脑电波发送成功!',
+					type: 'error '
+				});
+				let mgsData = {
+					messageContent: this.missData.messageContent,
+					//todo 当前登录人信息
+					userBase: {
+						nickname: this.getLoginUser.nickname
+					}
+				};
+				this.misss.unshift(mgsData);
+				//清空内容
+				this.missData.messageContent = '';
+			});
+		},
+		//跳转到发送故事的页面
+		openSendView(index) {
+			if (!this.$pig.user.isLogin()) {
+				return;
+			}
+			let that = this;
+			that.showStoryPopup = false;
+			let id = that.addStoryModes[index].id;
+			if (id === 'putPhoto') {
+				that.openPutPhotoView(index);
+				return;
+			}
+			let pageUrl = that.addStoryModes[index].pageUrl;
+			// console.info(pageUrl);
+			//在起始页面跳转到test.vue页面并传递参数
+			uni.navigateTo({
+				url: pageUrl
+			});
+		},
+		openPutPhotoView(index) {
+			let that = this;
+			let pageUrl = that.addStoryModes[index].pageUrl;
+			uni.chooseImage({
+				count: 9,
+				sizeType: ['original', 'compressed'],
+				sourceType: ['album'],
+				success: function(selectImages) {
+					// console.info(JSON.stringify(selectImages.tempFilePaths));
+					uni.navigateTo({
+						url: pageUrl,
+						success: function(event) {
+							event.eventChannel.emit('selectImages', {
+								images: selectImages.tempFilePaths,
+								albumId: 0
+							});
+						}
+					});
+				}
+			});
+		},
+		changeLoveBanner() {
+			let that = this;
+			uni.showActionSheet({
+				itemList: ['修改壁纸'],
+				success: function(res) {
+					if (res.tapIndex == 0) {
+						that.changeRoomWallpaper();
+					}
+				}
+			});
+		},
+		changeRoomWallpaper() {
+			let that = this;
+			uni.chooseImage({
+				count: 1,
+				sizeType: ['original', 'compressed'],
+				sourceType: ['album'],
+				success: function(res) {
+					// console.log(res.tempFilePaths);
+					that.uploadBanner(res.tempFilePaths);
+				}
+			});
+		},
+		uploadBanner(tempFilePaths) {
+			let that = this;
+			uni.uploadFile({
+				url: that.$pig.constData.uploadUrl,
+				filePath: tempFilePaths[0],
+				name: 'file',
+				formData: {
+					loveId: that.getLoveStartId,
+					entityId: that.getLoveStartId,
+					entityType: 2
+				},
+				success: uploadFileRes => {
+					// console.log(uploadFileRes.data);
+					//查询恋爱空间信息
+					that.$u.api
+						.queryLoveStart({
+							loveId: that.getLoveStartId
+						})
+						.then(res => {
+							// console.info(res);
+							that.loveStart = res;
+							that.modifyLoveStartInfo(res);
+						});
+					that.$refs.uToast.show({
+						title: '修改成功',
+						type: 'success'
+					});
+				}
+			});
+		}
+	}
+};
+</script>
+
+<style lang="scss">
+page {
+	background-color: #fff;
+	height: 100%;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+.love-main {
+	// margin: $love-view-margin;
+}
+
+.love-main > view {
+	// margin-bottom: $love-big-margin;
+}
+
+.love-time {
+	z-index: -1;
+	display: flex;
+	justify-content: space-around;
+	position: relative;
+	text-align: center;
+	height: 540rpx;
+	background-size: cover;
+	// border-radius: 0 0 $love-border-radius $love-border-radius;
+	padding-top: $love-padding;
+	color: #515151;
+
+	// view {
+	// 	z-index: 100;
+	// }
+	.love-time-info {
+		display: flex;
+		background-color: rgba($color: #f3f4f5, $alpha: 0.4);
+		justify-content: space-around;
+		width: 80%;
+		height: 150rpx;
+		margin-top: 20%;
+		border-radius: 80rpx;
+		padding: $love-padding 0;
+	}
+
+	.love-time-day {
+		margin-top: 10rpx;
+		font-size: 40rpx;
+	}
+
+	.we-name {
+		font-size: 24rpx;
+		// color: #000;
+	}
+
+	&:after {
+		position: absolute;
+		left: 0;
+		top: 0;
+		content: '';
+		background: white;
+		width: 100%;
+		height: 100%;
+		opacity: 0;
+		border-radius: 0 0 $love-border-radius $love-border-radius;
+	}
+}
+
+.message {
+	z-index: 100;
+	margin-bottom: $love-big-margin;
+	margin-top: -30rpx;
+	border-radius: $love-border-radius $love-border-radius 0 0;
+	background-color: white;
+	padding: $love-padding;
+	.msg-send {
+		padding: 8rpx;
+		border-radius: $love-border-radius;
+		margin-bottom: $love-margin;
+		display: flex;
+		background-color: #f3f4f6;
+
+		// max-height: 300rpx;
+		.msg-send-input {
+			width: 100%;
+			font-size: 28rpx;
+		}
+
+		.msg-send-input,
+		.uni-textarea {
+			min-height: 20px;
+			max-height: 150px;
+		}
+
+		.msg-send-btn {
+			padding: 0 $love-padding;
+		}
+	}
+
+	.we-like {
+		width: 100%;
+		height: 100rpx;
+		margin-bottom: $love-margin;
+		display: flex;
+		justify-content: space-between;
+
+		.we-like-item {
+			width: 49%;
+			display: flex;
+			height: 100rpx;
+			color: white;
+			border-radius: $love-border-radius;
+			background: linear-gradient(to right, #a6ffcb, #12d8fa);
+			text-align: center;
+			align-items: center;
+		}
+
+		.we-like-woman {
+			background: linear-gradient(to right, #ed4264, #ffedbc) !important;
+			justify-content: flex-end;
+		}
+
+		.people-image {
+			width: 100rpx;
+			height: 100rpx;
+		}
+
+		.we-like-content {
+			line-height: 50rpx;
+			width: 60%;
+		}
+
+		.we-like-number {
+		}
+	}
+
+	.message-main {
+		height: 288rpx;
+		// background:  $love-green;
+		// padding: 0 $love-padding;
+	}
+
+	.message-item {
+		display: flex;
+		justify-content: flex-start;
+		align-items: flex-start;
+		align-content: flex-start;
+		flex-wrap: nowrap;
+		flex-direction: row;
+		// margin: $love-margin;
+		background: white;
+		// box-shadow: 0 14px 20px -10px rgba(0,0,0,.1);
+		box-shadow: 0 6rpx 12rpx rgba(233, 238, 249, 0.9);
+
+		margin-bottom: $love-margin;
+		word-break: break-all;
+		border-radius: $love-border-radius;
+	}
+
+	.message-content {
+		// background-color: #feeaec;
+		// border: 1rpx solid #fca8b0;
+		//     color: #ff6773;
+
+		background: white;
+		padding: $love-padding;
+		word-break: break-all;
+		border-radius: $love-border-radius;
+	}
+}
+
+.todo {
+	// margin: 0 $love-margin $love-view-margin $love-margin;
+
+	.todo-main {
+		.todo-item {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			height: 60rpx;
+			border-radius: $love-border-radius;
+			padding: $love-padding;
+			margin-bottom: $love-margin;
+			background-color: white;
+		}
+	}
+}
+
+.story {
+	// margin: 0 $love-margin;
+	// margin-left: $love-view-margin;
+	// margin-right: $love-view-margin;
+}
+
+.add-story-popup {
+	.love-tip {
+		font-size: 20rpx;
+		color: $u-tips-color;
+		text-align: center;
+		margin: 30rpx 0;
+	}
+
+	.story-fab {
+		position: fixed;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		z-index: 10000;
+		border-radius: 45px;
+		box-shadow: 0 0 2px 0px $love-color;
+		width: 90rpx;
+		height: 90rpx;
+		color: #ffffff;
+		background-color: $love-color;
+		font-size: 50rpx;
+		right: 25px;
+		bottom: 40px;
+	}
+
+	.add-story-mode {
+		margin: $love-margin 0;
+
+		.add_mode_item {
+			text-align: center;
+			border-radius: $love-border-radius;
+			margin-bottom: 20rpx;
+		}
+
+		.add_mode_title {
+			// margin: 6rpx 0;
+		}
+
+		.mode_image {
+			width: 66rpx;
+			height: 66rpx;
+		}
+	}
+}
+</style>

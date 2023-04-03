@@ -1,0 +1,75 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/loveStart/loveStart",
+    "pages/user/login",
+    "pages/center/index",
+    "pages/memories/memories",
+    "pages/story/story-detail",
+    "pages/story/dynamicDetail",
+    "pages/saveStory/put-story",
+    "pages/saveStory/put-dynamic",
+    "pages/loveStart/sendLove",
+    "pages/loveStart/acceptLove",
+    "pages/center/loveRoom",
+    "pages/story/index",
+    "pages/memories/videos",
+    "pages/promise/index",
+    "pages/album/pushPhoto",
+    "pages/anniversary/anniversarys",
+    "pages/promise/editPromise",
+    "pages/anniversary/editAnniversary",
+    "pages/commoms/showimg",
+    "pages/promise/promiseInfo",
+    "pages/album/index",
+    "pages/album/albumPage",
+    "pages/album/albumDetail",
+    "pages/album/newAlbum",
+    "pages/album/selectImage",
+    "pages/anniversary/index",
+    "pages/community/index",
+    "pages/index/test",
+    "pages/message/index"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "爱窝",
+    "navigationBarBackgroundColor": "#fff",
+    "backgroundColor": "#fff",
+    "backgroundColorTop": "#fff",
+    "backgroundColorBottom": "#fff"
+  },
+  "tabBar": {
+    "color": "#707070",
+    "selectedColor": "#ff6773",
+    "borderStyle": "white",
+    "backgroundColor": "white",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "static/icon/tab/index.png",
+        "selectedIconPath": "static/icon/tab/index-select.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/anniversary/index",
+        "iconPath": "static/icon/tab/anniversary.png",
+        "selectedIconPath": "static/icon/tab/anniversary-sel.png",
+        "text": "纪念日"
+      },
+      {
+        "pagePath": "pages/center/index",
+        "iconPath": "static/icon/tab/me.png",
+        "selectedIconPath": "static/icon/tab/me-select.png",
+        "text": "我"
+      }
+    ]
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "方便获取准确的位置信息"
+    }
+  },
+  "usingComponents": {}
+}

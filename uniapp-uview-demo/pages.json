@@ -8,6 +8,12 @@
 			"style": {
 				"navigationBarTitleText": "uni-app"
 			}
+		},
+		{
+			"path": "pages/question/base",
+			"style": {
+				"navigationBarTitleText": "问答"
+			}
 		}
 	],
 	"globalStyle": {

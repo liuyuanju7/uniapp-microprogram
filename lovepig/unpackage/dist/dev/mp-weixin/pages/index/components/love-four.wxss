@@ -1,0 +1,149 @@
+@charset "UTF-8";
+/**
+ * 下方引入的为uView UI的集成样式文件，为scss预处理器，其中包含了一些"u-"开头的自定义变量
+ * uView自定义的css类名和scss变量，均以"u-"开头，不会造成冲突，请放心使用 
+ */
+.highlight.data-v-14211e84 {
+  color: #ff6773;
+}
+.baseStyle.data-v-14211e84 {
+  padding: 16rpx;
+  background-color: white;
+  border-radius: 20rpx;
+}
+.image-style.data-v-14211e84 {
+  width: 100%;
+  height: 100%;
+  border-radius: 20rpx;
+}
+.border-radius.data-v-14211e84 {
+  border-radius: 20rpx;
+}
+.base_button.data-v-14211e84 {
+  width: 80%;
+  height: 100rpx;
+  text-align: center;
+  line-height: 100rpx;
+  color: white;
+  font-size: 30rpx;
+  box-shadow: 0 0px 10px #F5F5F5;
+  background: linear-gradient(to right, #ed4264, #ffedbc);
+  border-radius: 50rpx;
+  margin: 20rpx auto;
+}
+.right-btn.data-v-14211e84 {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  border-radius: 45px;
+  box-shadow: 0 0 2px 0px #ff6773;
+  width: 90rpx;
+  height: 90rpx;
+  color: #ffffff;
+  background-color: #ff6773;
+  font-size: 50rpx;
+  right: 25px;
+  bottom: 50px;
+}
+.base-input.data-v-14211e84 {
+  background-color: #f3f4f6;
+  padding: 30rpx;
+  margin: 20rpx 28rpx;
+  border-radius: 20rpx;
+}
+.line-hid.data-v-14211e84 {
+  width: 200px;
+  text-align: right;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.text-hh.data-v-14211e84 {
+  word-break: break-all;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+}
+.text-sl.data-v-14211e84 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.love-wrapper.data-v-14211e84 {
+  width: 100%;
+  height: 400rpx;
+  margin: 28rpx 0;
+  display: flex;
+  justify-content: space-around;
+  overflow: hidden;
+}
+.love-items.data-v-14211e84 {
+  width: 46%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.love-items .love-item.data-v-14211e84 {
+  height: 192rpx;
+  overflow: hidden;
+  border-radius: 20rpx;
+  display: flex;
+  flex-direction: column;
+  color: white;
+}
+.message-main.data-v-14211e84 {
+  background-color: rgba(0, 153, 255, 0.6);
+}
+.message-main .message-time.data-v-14211e84 {
+  background-color: #0099FF;
+  padding: 16rpx 0;
+  display: inline;
+  text-align: center;
+}
+.message-main .message-content.data-v-14211e84 {
+  padding: 10rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+}
+.promise.data-v-14211e84 {
+  background-color: rgba(255, 55, 87, 0.6);
+  text-align: center;
+}
+.promise .promise-title.data-v-14211e84 {
+  background-color: #ff3757;
+  padding: 16rpx 0;
+}
+.promise .promise-time .promise-time-day.data-v-14211e84 {
+  font-size: 70rpx;
+  font-weight: bold;
+  display: inline;
+}
+.promise .promise-time .promise-time-desc.data-v-14211e84 {
+  display: inline;
+}
+.promise .promise-time-info.data-v-14211e84 {
+  color: #f2f3f4;
+  font-size: 18rpx;
+  margin-bottom: 10rpx;
+}
+.love-pic.data-v-14211e84 {
+  width: 46%;
+  height: 100%;
+  background-color: #cfe46e;
+  border-radius: 20rpx;
+}
+.love-add.data-v-14211e84 {
+  height: 192rpx;
+  border-radius: 20rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  box-shadow: 0 10px 10px #F5F5F5;
+}
+

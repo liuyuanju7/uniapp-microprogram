@@ -44,6 +44,9 @@
 							</view>
 						</u-col>
 					</u-row>
+
+					<u-button @tap=getAnswer></u-button>
+
 				</view>
 			</view>
 		</view>
@@ -51,7 +54,7 @@
 		<view>
 			<u-tabbar :value="value1" @change="change1" :fixed="true" :placeholder="false" :safeAreaInsetBottom="false">
 				<u-tabbar-item text="首页" icon="home" @click="click1"></u-tabbar-item>
-				<u-tabbar-item text="放映厅" icon="photo" @click="click1"></u-tabbar-item>
+				<u-tabbar-item text="问答" icon="photo" @click="toBaseQuestion"></u-tabbar-item>
 				<u-tabbar-item text="直播" icon="play-right" @click="click1"></u-tabbar-item>
 				<u-tabbar-item text="我的" icon="account" @click="click1"></u-tabbar-item>
 			</u-tabbar>
@@ -104,12 +107,39 @@
 		},
 		methods: {
 			change() {
-
 			},
 			click1(e) {
 				console.log('click1', e);
 			},
 			change1() {
+
+			},
+			toBaseQuestion() {
+				uni.navigateTo({
+					url: "/pages/question/base"
+				})
+			},
+			getAnswer() {
+				uni.request({
+					url: 'https://service-107sam5o-1317183770.hk.apigw.tencentcs.com/v1/completions', //仅为示例，并非真实接口地址。
+					data: {
+						model: "text-davinci-003",
+						prompt: `input:测试问题?
+			        output:`,
+						max_tokens: 300,
+						temperature: .6,
+						stop: ['output:']
+					},
+					header: {
+						'Authorization': 'Bearer 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'
+					},
+					contentType: 'json',
+					dataType: 'json',
+					success: (res) => {
+						console.log(res.data);
+						this.question = 'request success' + this.keyword;
+					}
+				});
 
 			}
 		}
@@ -150,12 +180,13 @@
 		background-color: #909193;
 		border-radius: 15px;
 	}
+
 	.grid-text {
-	        font-size: 14px;
-	        color: #909399;
-	        padding: 10rpx 0 20rpx 0rpx;
-	        /* #ifndef APP-PLUS */
-	        box-sizing: border-box;
-	        /* #endif */
-	    }
+		font-size: 14px;
+		color: #909399;
+		padding: 10rpx 0 20rpx 0rpx;
+		/* #ifndef APP-PLUS */
+		box-sizing: border-box;
+		/* #endif */
+	}
 </style>

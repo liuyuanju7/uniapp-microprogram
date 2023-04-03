@@ -1,0 +1,13 @@
+{
+  "navigationBarTitleText": "定承诺",
+  "usingComponents": {
+    "u-toast": "/uview-ui/components/u-toast/u-toast",
+    "loading": "/components/loading/loading",
+    "u-form": "/uview-ui/components/u-form/u-form",
+    "u-form-item": "/uview-ui/components/u-form-item/u-form-item",
+    "u-input": "/uview-ui/components/u-input/u-input",
+    "u-calendar": "/uview-ui/components/u-calendar/u-calendar",
+    "u-select": "/uview-ui/components/u-select/u-select",
+    "u-icon": "/uview-ui/components/u-icon/u-icon"
+  }
+}

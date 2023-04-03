@@ -1,0 +1,1 @@
+<view><loading class="vue-ref" vue-id="179fde47-1" data-ref="lovdLoading" bind:__l="__l"></loading><block wx:if="{{showEmpty}}"><u-empty vue-id="179fde47-2" text="哦no竟然没有任何视频" src="/static/in-love.svg" margin-top="50" bind:__l="__l"></u-empty></block></view>

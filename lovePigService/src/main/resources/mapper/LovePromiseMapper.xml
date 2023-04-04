@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.jokeo.lovepig.mapper.LovePromiseMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.jokeo.lovepig.entity.LovePromise">
+        <id column="id" property="promiseId" />
+        <result column="love_id" property="loveId" />
+        <result column="promise_name" property="promiseName" />
+        <result column="promise_remarks" property="promiseRemarks" />
+        <result column="user_id" property="userId" />
+        <result column="promise_type" property="promiseType" />
+        <result column="promise_state" property="promiseState" />
+        <result column="promise_category" property="promiseCategory" />
+        <result column="promise_time" property="promiseTime" />
+        <result column="promise_remind" property="promiseRemind" />
+        <result column="promise_repeat" property="promiseRepeat" />
+        <result column="promise_background" property="promiseBackground" />
+        <result column="create_time" property="createTime" />
+        <result column="modify_time" property="modifyTime" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        promise_id, love_id, promise_name, promise_remarks, user_id, promise_type, promise_state, promise_category, promise_time, promise_remind, promise_repeat, promise_background, create_time, modify_time
+    </sql>
+    <select id="queryPromiseAndRecord" resultType="cn.jokeo.lovepig.entity.LovePromise"></select>
+
+    <select id="queryNeedRemind" resultType="cn.jokeo.lovepig.entity.vo.PromiseRemindVo">
+        SELECT promise_id,
+        lp.love_id,
+        promise_name,
+        promise_remarks,
+        lp.user_id,
+        promise_type,
+        promise_state,
+        promise_category,
+        promise_time,
+        target_time,
+        promise_remind,
+        promise_repeat,
+        ul.openid
+        FROM love_promise lp
+        inner join love_start ls on lp.love_id = ls.love_id and love_state=1
+        inner join user_login ul on lp.user_id = ul.user_id
+        WHERE promise_state = 1
+        AND promise_remind != -1
+        AND promise_type != 3
+        AND date_add(current_date, interval promise_remind day) = target_time
+    </select>
+
+</mapper>

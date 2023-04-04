@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.jokeo.lovepig.mapper.UserBaseMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.jokeo.lovepig.entity.UserBase">
+        <id column="id" property="id"/>
+        <result column="username" property="username"/>
+        <result column="gender" property="gender"/>
+        <result column="nickname" property="nickname"/>
+        <result column="avatar" property="avatar"/>
+        <result column="signature" property="signature"/>
+        <result column="city" property="city"/>
+        <result column="love_id" property="loveId"/>
+        <result column="spouse_id" property="spouseId"/>
+        <result column="state" property="state"/>
+        <result column="create_time" property="createTime"/>
+        <result column="modify_time" property="modifyTime"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, username, gender, nickname, avatar, signature, city,love_id, spouse_id, state, create_time, modify_time
+    </sql>
+
+</mapper>

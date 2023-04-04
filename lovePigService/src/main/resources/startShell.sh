@@ -1,0 +1,1 @@
+sudo -u springboot nohup /usr/java/jdk1.8.0_121/bin/java -jar -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=5219 /www/wwwroot/love.jokeo.cn/love-pig-0.0.1-SNAPSHOT.jar --server.port=5210  >> /tmp/Z68XQP3WM7.log 2>&1 &

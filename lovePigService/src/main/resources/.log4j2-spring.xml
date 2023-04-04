@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration status="info">
+    <!-- 自定义变量 -->
+    <properties>
+        <Property name="APP_NAME">love-pig</Property>
+        <Property name="LOG_PATH">/home/work/logs/${APP_NAME}</Property>
+        <!-- 输出格式 -->
+        <Property name="LOG_PATTERN">[%d{yyyy-MM-dd HH:mm:ss}] %-5level %class{36} %L %M - %msg%xEx%n</Property>
+    </properties>
+
+    <appenders>
+        <console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="[%d][%t][%p][%l] %m%n"/>
+        </console>
+
+        <!-- RollingFile节点用来定义超过指定大小自动删除旧的创建新的的Appender
+　　　　　　　　        name:指定Appender的名字
+　　　　　　　　        fileName:指定输出日志的目的文件带全路径的文件名
+　　　　　　　　        filePattern:指定新建日志文件的名称格式
+　　　　　　　　        PatternLayout:输出格式，不设置默认为:%m%n
+　　　　　　　     Policies:指定滚动日志的策略，就是什么时候进行新建日志文件输出日志
+　　　　　　　          TimeBasedTriggeringPolicy:Policies子节点，基于时间的滚动策略，interval属性用来指定多久滚动一次，默认是1 hour。
+                            modulate=true用来调整时间：比如现在是早上3am，interval是4，那么第一次滚动是在4am，接着是8am，12am...而不是7am
+　　　　　　　　        SizeBasedTriggeringPolicy:Policies子节点，基于指定文件大小的滚动策略，size属性用来定义每个日志文件的大小
+　　　　　　　　        DefaultRolloverStrategy:用来指定同一个文件夹下最多有几个日志文件时开始删除最旧的，创建新的(通过max属性)。 -->
+
+        <!-- 输出info及以下级别的信息-->
+        <RollingFile name="RollingFileInfo" fileName="${LOG_PATH}/info.log"
+                     filePattern="${LOG_PATH}/$${date:yyyy-MM}/info-%d{yyyy-MM-dd}-%i.log">
+            <Filters>
+                <ThresholdFilter level="INFO"/>
+                <ThresholdFilter level="WARN" onMatch="DENY"
+                                 onMismatch="NEUTRAL"/>
+            </Filters>
+            <!-- 输出日志格式 -->
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+            <Policies>
+                <!-- 归档每天的文件 -->
+                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+                <!-- 单个文件大小 -->
+                <SizeBasedTriggeringPolicy size="10 MB"/>
+            </Policies>
+            <!-- 每天文件个数 -->
+            <DefaultRolloverStrategy compressionLevel="0" max="10"/>
+        </RollingFile>
+        <!-- 输出warn及以下级别的信息 -->
+        <RollingFile name="RollingFileWarn" fileName="${LOG_PATH}/warn.log"
+                     filePattern="${LOG_PATH}/$${date:yyyy-MM}/warn-%d{yyyy-MM-dd}-%i.log">
+            <Filters>
+                <ThresholdFilter level="WARN"/>
+                <ThresholdFilter level="ERROR" onMatch="DENY"
+                                 onMismatch="NEUTRAL"/>
+            </Filters>
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+            <Policies>
+                <!-- 归档每天的文件 -->
+                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+                <!-- 单个文件大小 -->
+                <SizeBasedTriggeringPolicy size="2 MB"/>
+            </Policies>
+            <!-- 每天文件个数 -->
+            <DefaultRolloverStrategy compressionLevel="0" max="10"/>
+        </RollingFile>
+        <!-- 输出error及以下级别的信息 -->
+        <RollingFile name="RollingFileError" fileName="${LOG_PATH}/error.log"
+                     filePattern="${LOG_PATH}/$${date:yyyy-MM}/error-%d{yyyy-MM-dd}-%i.log">
+            <ThresholdFilter level="ERROR"/>
+            <PatternLayout pattern="[${LOG_PATTERN}"/>
+            <Policies>
+                <!-- 归档每天的文件 -->
+                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+                <!-- 单个文件大小 -->
+                <SizeBasedTriggeringPolicy size="2 MB"/>
+            </Policies>
+            <!-- 每天文件个数 -->
+            <DefaultRolloverStrategy compressionLevel="0" max="10"/>
+        </RollingFile>
+
+    </appenders>
+
+    <loggers>
+        <root level="info">
+            <appender-ref ref="Console"/>
+            <appender-ref ref="RollingFileInfo"/>
+            <appender-ref ref="RollingFileWarn"/>
+            <appender-ref ref="RollingFileError"/>
+        </root>
+
+
+        <!--log4j2 自带过滤日志-->
+        <Logger name="org.apache.catalina.startup.DigesterFactory" level="error" />
+        <Logger name="org.apache.catalina.util.LifecycleBase" level="error" />
+        <Logger name="org.apache.coyote.http11.Http11NioProtocol" level="warn" />
+        <logger name="org.apache.sshd.common.util.SecurityUtils" level="warn"/>
+        <Logger name="org.apache.tomcat.util.net.NioSelectorPool" level="warn" />
+        <Logger name="org.crsh.plugin" level="warn" />
+        <logger name="org.crsh.ssh" level="warn"/>
+        <Logger name="org.eclipse.jetty.util.component.AbstractLifeCycle" level="error" />
+        <Logger name="org.hibernate.validator.internal.util.Version" level="warn" />
+        <logger name="org.springframework.boot.actuate.autoconfigure.CrshAutoConfiguration" level="warn"/>
+        <logger name="org.springframework.boot.actuate.endpoint.jmx" level="warn"/>
+        <logger name="org.thymeleaf" level="warn"/>
+    </loggers>
+
+</configuration>

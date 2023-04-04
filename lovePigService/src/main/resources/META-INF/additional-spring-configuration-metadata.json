@@ -1,0 +1,14 @@
+{
+  "properties": [
+    {
+      "name": "love.base-path",
+      "type": "java.lang.String",
+      "description": "Description for love.base-path."
+    },
+    {
+      "name": "love.tencent-oss.platform",
+      "type": "java.lang.String",
+      "description": "Description for love.tencent-oss.platform."
+    }
+  ]
+}

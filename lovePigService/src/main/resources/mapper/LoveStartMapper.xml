@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.jokeo.lovepig.mapper.LoveStartMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.jokeo.lovepig.entity.LoveStart">
+        <id column="love_id" property="loveId" />
+        <result column="love_name" property="loveName" />
+        <result column="love_message" property="loveMessage" />
+        <result column="invite_user" property="inviteUser" />
+        <result column="accepted_user" property="acceptedUser" />
+        <result column="invite_time" property="inviteTime" />
+        <result column="accepted_time" property="acceptedTime" />
+        <result column="love_time" property="loveTime" />
+        <result column="separated_time" property="separatedTime" />
+        <result column="allow_access" property="allowAccess" />
+        <result column="love_state" property="loveState" />
+        <result column="story_count" property="storyCount" />
+        <result column="message_count" property="messageCount" />
+        <result column="promise_count" property="promiseCount" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        love_id, love_name, love_message, invite_user, accepted_user, invite_time, accepted_time, love_time, separated_time, allow_access, love_state, story_count, message_count, promise_count
+    </sql>
+
+</mapper>

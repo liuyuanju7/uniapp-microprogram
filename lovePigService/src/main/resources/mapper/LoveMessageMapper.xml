@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.jokeo.lovepig.mapper.LoveMessageMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="LoveMessageVoResultMap" type="cn.jokeo.lovepig.entity.vo.LoveMessageVo">
+        <id column="id" property="id"/>
+        <result column="love_id" property="loveId"/>
+        <result column="user_id" property="userId"/>
+        <result column="message_type" property="messageType"/>
+        <result column="message_content" property="messageContent"/>
+        <result column="create_time" property="createTime"/>
+        <association property="userBase" javaType="cn.jokeo.lovepig.entity.vo.UserBaseInfoVo">
+            <id property="id" column="user_id"/>
+            <result property="username" column="username"/>
+            <result property="nickname" column="nickname"/>
+            <result property="avatar" column="avatar"/>
+            <result property="gender" column="gender"/>
+        </association>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, love_id, user_id, message_type, message_content, state, create_time,modify_time
+    </sql>
+
+    <select id="selectMessageVo" resultMap="LoveMessageVoResultMap">
+        select lm.id,
+        lm.love_id,
+        lm.user_id,
+        lm.message_type,
+        lm.message_content,
+        lm.state,
+        lm.create_time,
+        ub.username,
+        ub.nickname,
+        ub.avatar,
+        ub.gender
+        from love_message lm
+        inner join user_base ub on ub.id = lm.user_id
+        where lm.state = 1
+        and lm.love_id = #{messageRequest.loveId}
+        and lm.message_type = #{messageRequest.messageType}
+        <if test="messageRequest.todayMessage==true">
+            and lm.create_time BETWEEN CONCAT(CURDATE(),' 00:00:00') AND CONCAT(CURDATE(),' 23:59:59')
+        </if>
+        <if test="messageRequest.userId!=null">
+            and lm.user_id=#{messageRequest.userId}
+        </if>
+        order by lm.create_time desc
+    </select>
+
+</mapper>

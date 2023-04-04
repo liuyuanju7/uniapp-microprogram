@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.jokeo.lovepig.mapper.LoveStoryMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.jokeo.lovepig.entity.LoveStory">
+        <id column="story_id" property="storyId"/>
+        <result column="love_id" property="loveId"/>
+        <result column="user_id" property="userId"/>
+        <result column="story_type" property="storyType"/>
+        <result column="title" property="title"/>
+        <result column="banner" property="banner"/>
+        <result column="summary" property="summary"/>
+        <result column="content" property="content"/>
+        <result column="see_permissions" property="seePermissions"/>
+        <result column="comment_state" property="commentState"/>
+        <result column="comment_num" property="commentNum"/>
+        <result column="like_num" property="likeNum"/>
+        <result column="location" property="location"/>
+        <result column="weather" property="weather"/>
+        <result column="story_time" property="storyTime"/>
+        <result column="publish_Time" property="publishTime"/>
+        <result column="state" property="state"/>
+        <result column="create_time" property="createTime"/>
+        <result column="modify_time" property="modifyTime"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        story_id, love_id, user_id, story_type, title, banner, summary,
+        content,see_permissions, comment_state, comment_num, like_num, location,
+        weather, story_time, publish_Time, state, create_time, modify_time
+    </sql>
+
+    <!--列表页需要查询的列-->
+    <sql id="storyListColumn">
+        s.story_id,
+       s.love_id,
+       s.user_id,
+       s.story_type,
+       s.title,
+       s.banner,
+       s.summary,
+       s.see_permissions,
+       s.comment_state,
+       s.comment_num,
+       s.like_num,
+       s.location,
+       s.weather,
+       s.story_time,
+       s.publish_time,
+       s.state,
+       s.create_time,
+       s.modify_time,
+       s.username,
+       s.nickname,
+       s.avatar,
+       r.resource_id,
+       r.resource_url,
+       s.promise_id,
+       s.promise_name,
+       s.annual,
+       s.finish_time
+    </sql>
+    <sql id="storyInColumn">
+        ls.story_id,ls.love_id, ls.user_id,ls.story_type,ls.title,
+       ls.banner, ls.summary,ls.content,ls.see_permissions,ls.comment_state,
+       ls.comment_num,ls.like_num,ls.location,ls.weather,ls.story_time,
+       ls.publish_Time,ls.state,ls.create_time,ls.modify_time,
+
+       pr.promise_id, pr.promise_name, pr.annual, pr.finish_user_id, pr.finish_time,
+
+         ub.username,ub.nickname,ub.avatar
+    </sql>
+    <!--故事详细信息需要查询的列-->
+    <sql id="storyVoInfoColumn">
+        s.story_id,
+       s.love_id,
+       s.user_id,
+       s.story_type,
+       s.title,
+       s.banner,
+       s.content,
+       s.see_permissions,
+       s.comment_state,
+       s.comment_num,
+       s.like_num,
+       s.location,
+       s.weather,
+       s.story_time,
+       s.publish_time,
+       s.state,
+       s.create_time,
+       s.modify_time,
+       ub.username,
+       ub.nickname,
+       ub.avatar,
+       r.resource_id,
+       r.resource_url,
+       pr.promise_id,
+       pr.promise_name,
+       pr.annual,
+       pr.finish_time
+    </sql>
+    <!--子查询嵌套的列-->
+    <resultMap id="storyInfoMap" type="cn.jokeo.lovepig.entity.vo.StoryVo">
+        <id property="storyId" column="story_id"/>
+        <result property="loveId" column="love_id"/>
+        <result property="storyType" column="story_type"/>
+        <result property="title" column="title"/>
+        <result property="banner" column="banner"/>
+        <result property="summary" column="summary"/>
+        <result property="content" column="content"/>
+        <result column="see_permissions" property="seePermissions"/>
+        <result property="commentState" column="comment_state"/>
+        <result property="commentNum" column="comment_num"/>
+        <result property="likeNum" column="like_num"/>
+        <result property="location" column="location"/>
+        <result property="weather" column="weather"/>
+        <result property="storyTime" column="story_time"/>
+        <result property="publishTime" column="publish_time"/>
+        <result property="state" column="state"/>
+        <result property="createTime" column="create_time"/>
+        <result property="modifyTime" column="modify_time"/>
+        <association property="userBase" javaType="cn.jokeo.lovepig.entity.vo.UserBaseInfoVo">
+            <id property="id" column="user_id"/>
+            <result property="username" column="username"/>
+            <result property="nickname" column="nickname"/>
+            <result property="avatar" column="avatar"/>
+            <result property="gender" column="gender"/>
+        </association>
+        <association property="promiseRecord" javaType="cn.jokeo.lovepig.entity.vo.PromiseRecordVo">
+            <id property="promiseId" column="promise_id"/>
+            <result property="promiseName" column="promise_name"/>
+            <result property="annual" column="annual"/>
+            <result property="finishTime" column="finish_time"/>
+        </association>
+        <collection property="resources" ofType="cn.jokeo.lovepig.entity.vo.ResourceVo">
+            <id property="resourceId" column="resource_id"/>
+            <result property="resourceUrl" column="resource_url"/>
+        </collection>
+    </resultMap>
+
+    <select id="selectStoryVo" resultMap="storyInfoMap">
+        select
+        <include refid="storyListColumn"></include>
+        from (
+            select
+            <include refid="storyInColumn"></include>
+            from love_story ls
+            inner join user_base ub on ls.user_id = ub.id
+            left join love_promise_record pr on pr.story_id = ls.story_id
+            where ls.love_id = #{loveId}
+            and ls.state = 1
+            <if test="storyType != null and storyType != 0">
+                and ls.story_type =#{storyType}
+            </if>
+            <if test="promiseId != null">
+                and pr.promise_id = #{promiseId}
+            </if>
+            <if test="originator != null">
+                and ls.user_id = #{originator}
+            </if>
+            order by ls.modify_time desc
+            limit ${offset},${pageSize}
+        ) s
+        left join resource_relate r on r.entity_type = 1 and s.story_id = r.entity_id
+        order by s.create_time desc
+    </select>
+
+    <select id="selectStoryVoById" resultMap="storyInfoMap">
+        select
+        <include refid="storyVoInfoColumn"></include>
+        from love_story s
+        inner join user_base ub on s.user_id = ub.id
+        left join love_promise_record pr on pr.story_id = s.story_id
+        left join resource_relate r on s.story_id = r.entity_id and r.entity_type=1
+        where s.state = 1 and s.story_id=#{storyId}
+    </select>
+
+    <select id="selectCount" resultType="java.lang.Integer"
+            parameterType="cn.jokeo.lovepig.entity.model.SelectStoryModel">
+        select count(1)
+        from love_story ls
+        left join love_promise_record pr on pr.story_id = ls.story_id
+        where ls.love_id = #{loveId}
+        and ls.state = 1 and ls.story_type in (1,2,3)
+        <if test="promiseId != null">
+            and pr.promise_id = #{promiseId}
+        </if>
+    </select>
+
+</mapper>

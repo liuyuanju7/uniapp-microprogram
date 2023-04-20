@@ -53,7 +53,7 @@
 
 		<view>
 			<u-tabbar :value="value1" @change="change1" :fixed="true" :placeholder="false" :safeAreaInsetBottom="false">
-				<u-tabbar-item text="首页" icon="home" @click="click1"></u-tabbar-item>
+				<u-tabbar-item text="首页测试" icon="home" @click="click1"></u-tabbar-item>
 				<u-tabbar-item text="问答" icon="photo" @click="toBaseQuestion"></u-tabbar-item>
 				<u-tabbar-item text="直播" icon="play-right" @click="click1"></u-tabbar-item>
 				<u-tabbar-item text="我的" icon="account" @click="click1"></u-tabbar-item>
